@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All-Inclusive Auszeit · Algarve</title>
+<link rel="preconnect" href="https://en.wikipedia.org">
+<style>
+:root {
+  --bg:#08111a;
+  --panel:#101c2d;
+  --panel2:#16253b;
+  --text:#eef4ff;
+  --muted:#b9c7dc;
+  --accent:#f4c95d;
+  --line:rgba(255,255,255,.09);
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Inter, Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top, rgba(58,91,145,.25), transparent 28%),
+    linear-gradient(180deg,#08111a 0%, #0a1422 100%);
+}
+.shell { max-width:1080px; margin:0 auto; padding:18px; }
+.hero {
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(16,28,45,.95), rgba(13,21,34,.98));
+  box-shadow:0 28px 70px rgba(0,0,0,.28);
+  margin-bottom:20px;
+}
+.hero-image {
+  width:100%;
+  height:380px;
+  object-fit:cover;
+  display:block;
+  background:#1b2940;
+}
+.hero-copy { padding:24px 24px 28px; }
+.eyebrow {
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(244,201,93,.12);
+  color:var(--accent);
+  font-weight:700;
+  font-size:13px;
+}
+h1 {
+  margin:14px 0 10px;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.02em;
+}
+.lead {
+  margin:0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.6;
+  max-width:860px;
+}
+.section {
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  overflow:hidden;
+  box-shadow:0 18px 38px rgba(0,0,0,.2);
+  margin-bottom:18px;
+}
+.section h2 {
+  margin:0;
+  padding:20px 20px 8px;
+  font-size:28px;
+}
+.section p.intro {
+  margin:0;
+  padding:0 20px 18px;
+  color:var(--muted);
+  line-height:1.6;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  padding:20px;
+}
+.card {
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#0f1a2b,#15243b);
+  box-shadow:0 14px 28px rgba(0,0,0,.18);
+}
+.card img {
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  display:block;
+  background:#1b2940;
+}
+.card-body { padding:18px; }
+.card h3 {
+  margin:0 0 6px;
+  font-size:28px;
+  line-height:1.08;
+}
+.sub {
+  color:#d5e2f6;
+  opacity:.88;
+  margin:0 0 10px;
+  font-size:15px;
+}
+.card p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+}
+.loading {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  font-size:14px;
+  aspect-ratio:16/10;
+}
+footer {
+  color:var(--muted);
+  text-align:center;
+  padding:8px 0 22px;
+  font-size:14px;
+}
+@media (max-width: 860px) {
+  .cards { grid-template-columns:1fr; }
+  .hero-image { height:250px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <section class="hero">
+    <img id="hero-image" class="hero-image" alt="Algarve Küstenlandschaft">
+    <div class="hero-copy">
+      <span class="eyebrow">Algarve · Sonne · Küste · Entspannung</span>
+      <h1>All-Inclusive Auszeit<br>an der Algarve</h1>
+      <p class="lead">Die Algarve gehört zu den Regionen, die man ohne großen Aufwand erkunden kann: kurze Wege, viel Abwechslung und konstant gutes Wetter. Perfekt, um vom Hotel aus immer wieder kleine Ausflüge zu machen, ohne ständig unterwegs zu sein.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Mögliche Highlights</h2>
+    <p class="intro">Diese Auswahl verbindet beeindruckende Natur, entspannte Küstenorte und geschichtliche Stationen zu einer Auszeit, bei der Erholung und Entdecken gut zusammenpassen.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer>Visuelle HTML-Übersicht für eine mögliche Auszeit an der Algarve</footer>
+</div>
+
+<script>
+const stops = [{"title": "Algarve", "subtitle": "Sonne, Küste und entspannter Ausgangspunkt", "wiki": "Algarve", "text": "Die Algarve eignet sich besonders gut für eine entspannte Auszeit mit Hotelbasis. Kurze Wege, viel Abwechslung und konstantes Wetter machen die Region ideal, um zwischen Pool, Meer und kleinen Ausflügen zu wechseln."}, {"title": "Benagil-Höhle", "subtitle": "Eine der bekanntesten Naturkulissen Portugals", "wiki": "Benagil_Cave", "text": "Die Benagil-Höhle gehört zu den eindrucksvollsten Orten der Algarve. Das Licht, das durch die runde Öffnung in der Decke fällt, und das türkisfarbene Wasser machen sie zu einem der bekanntesten Naturbilder der Region."}, {"title": "Cabo de São Vicente", "subtitle": "Klippen, Atlantik und das \"Ende der Welt\"", "wiki": "Cape_Saint_Vincent", "text": "Am Cabo de São Vicente trifft man auf steile Klippen, starken Wind und den offenen Atlantik. Seit Jahrhunderten gilt dieser Ort als einer der markantesten Punkte im Südwesten Europas."}, {"title": "Praia do Amado", "subtitle": "Naturstrand an der wilden Westküste", "wiki": "Praia_do_Amado", "text": "Praia do Amado ist einer der schönsten naturbelassenen Strände der Algarve. Die rötlichen Klippen, der weite Strand und die kräftigen Wellen geben diesem Ort einen besonders ursprünglichen Charakter."}, {"title": "Ria Formosa", "subtitle": "Lagunenlandschaft voller Ruhe und Vogelwelt", "wiki": "Ria_Formosa", "text": "Ria Formosa ist ein weitläufiges Naturgebiet aus Lagunen, Inseln und Wasserarmen. Die Region ist besonders für ihre Vogelwelt bekannt und wirkt vielerorts ruhig, offen und fast unberührt."}, {"title": "Faro", "subtitle": "Altstadt und Ausgangspunkt für die Region", "wiki": "Faro,_Portugal", "text": "Faro verbindet eine charmante Altstadt mit kleinen Gassen, Stadtmauer und Hafen. Die Stadt ist ein guter Ausgangspunkt, um die Algarve kennenzulernen, ohne dass sie sich wie ein großer Städtetrip anfühlt."}, {"title": "Silves", "subtitle": "Maurische Geschichte und Burg über dem Fluss", "wiki": "Silves,_Portugal", "text": "Silves gehört zu den geschichtsträchtigsten Orten der Algarve. Besonders auffällig sind die gut erhaltene Burg, die maurische Vergangenheit und die ruhige Lage oberhalb des Flusses."}];
+const fallbackImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/640px-No_image_available.svg.png';
+
+async function fetchWikiImage(pageTitle) {
+  const url = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(pageTitle);
+  const res = await fetch(url, { headers: { accept: 'application/json' } });
+  const data = await res.json();
+  return (data.originalimage && data.originalimage.source) || (data.thumbnail && data.thumbnail.source) || fallbackImage;
+}
+
+function renderCards() {
+  document.getElementById('cards').innerHTML = stops.map((stop, idx) => `
+    <article class="card" id="card-${idx}">
+      <div class="loading">Bild wird geladen …</div>
+      <div class="card-body">
+        <h3>${stop.title}</h3>
+        <div class="sub">${stop.subtitle}</div>
+        <p>${stop.text}</p>
+      </div>
+    </article>
+  `).join('');
+}
+
+async function setHeroImage() {
+  const hero = document.getElementById('hero-image');
+  hero.src = fallbackImage;
+  try {
+    hero.src = await fetchWikiImage('Algarve');
+  } catch (e) {
+    hero.src = fallbackImage;
+  }
+}
+
+async function loadCardImages() {
+  for (let i = 0; i < stops.length; i++) {
+    const stop = stops[i];
+    const card = document.getElementById(`card-${i}`);
+    const loading = card.querySelector('.loading');
+    const img = document.createElement('img');
+    img.alt = stop.title;
+    img.loading = 'lazy';
+    img.src = fallbackImage;
+    try {
+      if (stop.image_override) {
+        img.src = stop.image_override;
+      } else {
+        img.src = await fetchWikiImage(stop.wiki);
+      }
+    } catch (e) {
+      img.src = fallbackImage;
+    }
+    loading.replaceWith(img);
+  }
+}
+
+renderCards();
+setHeroImage();
+loadCardImages();
+</script>
+</body>
+</html>
