@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sardinien Roadtrip · Wohnmobil</title>
+<link rel="preconnect" href="https://en.wikipedia.org">
+<style>
+:root {
+  --bg:#08111a;
+  --panel:#101c2d;
+  --panel2:#16253b;
+  --text:#eef4ff;
+  --muted:#b9c7dc;
+  --accent:#f4c95d;
+  --line:rgba(255,255,255,.09);
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Inter, Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top, rgba(58,91,145,.25), transparent 28%),
+    linear-gradient(180deg,#08111a 0%, #0a1422 100%);
+}
+.shell { max-width:1080px; margin:0 auto; padding:18px; }
+.hero {
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(180deg, rgba(16,28,45,.95), rgba(13,21,34,.98));
+  box-shadow:0 28px 70px rgba(0,0,0,.28);
+  margin-bottom:20px;
+}
+.hero-image {
+  width:100%;
+  height:380px;
+  object-fit:cover;
+  display:block;
+  background:#1b2940;
+}
+.hero-copy { padding:24px 24px 28px; }
+.eyebrow {
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(244,201,93,.12);
+  color:var(--accent);
+  font-weight:700;
+  font-size:13px;
+}
+h1 {
+  margin:14px 0 10px;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.02;
+  letter-spacing:-.02em;
+}
+.lead {
+  margin:0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.6;
+  max-width:860px;
+}
+.section {
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(180deg,var(--panel),var(--panel2));
+  overflow:hidden;
+  box-shadow:0 18px 38px rgba(0,0,0,.2);
+  margin-bottom:18px;
+}
+.section h2 {
+  margin:0;
+  padding:20px 20px 8px;
+  font-size:28px;
+}
+.section p.intro {
+  margin:0;
+  padding:0 20px 18px;
+  color:var(--muted);
+  line-height:1.6;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  padding:20px;
+}
+.card {
+  border:1px solid var(--line);
+  border-radius:24px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#0f1a2b,#15243b);
+  box-shadow:0 14px 28px rgba(0,0,0,.18);
+}
+.card img {
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  display:block;
+  background:#1b2940;
+}
+.card-body { padding:18px; }
+.card h3 {
+  margin:0 0 6px;
+  font-size:28px;
+  line-height:1.08;
+}
+.sub {
+  color:#d5e2f6;
+  opacity:.88;
+  margin:0 0 10px;
+  font-size:15px;
+}
+.card p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.6;
+}
+.loading {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  font-size:14px;
+  aspect-ratio:16/10;
+}
+footer {
+  color:var(--muted);
+  text-align:center;
+  padding:8px 0 22px;
+  font-size:14px;
+}
+@media (max-width: 860px) {
+  .cards { grid-template-columns:1fr; }
+  .hero-image { height:250px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <section class="hero">
+    <img id="hero-image" class="hero-image" alt="Sardinien Küstenlandschaft">
+    <div class="hero-copy">
+      <span class="eyebrow">Sardinien · Wohnmobil · Küste · Sonne</span>
+      <h1>Sardinien-Roadtrip<br>mit dem Wohnmobil</h1>
+      <p class="lead">Diese Seite zeigt eine mögliche Sardinien-Reise als Inspiration zum Verschenken. Im Mittelpunkt stehen Küsten, historische Orte, Natur und das Gefühl, mit dem Wohnmobil wirklich unterwegs zu sein – mit wenig Stress, viel Sonne und kleinen Abenteuern ohne große Planung.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Orte entlang der Route</h2>
+    <p class="intro">Von der Anreise über Italien bis zu Küstenorten, Inseln, Höhlen und Stadtbildern auf Sardinien: Diese Auswahl zeigt Stationen, die gut zu einer entspannten Wohnmobilreise mit viel Natur und Abwechslung passen.</p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer>Visuelle HTML-Übersicht für eine mögliche Sardinien-Reise mit dem Wohnmobil</footer>
+</div>
+
+<script>
+const stops = [{"title": "Anreise über Italien", "subtitle": "Vom Süden Deutschlands ans Tyrrhenische Meer", "wiki": "Livorno", "text": "Die Anreise nach Sardinien ist bereits Teil der Reise: durch Norditalien Richtung Küste, dann weiter ab Livorno mit der Fähre nach Olbia. Gerade mit dem Wohnmobil entsteht dabei früh das Gefühl, wirklich unterwegs zu sein."}, {"title": "Limone sul Garda", "subtitle": "Gardasee zwischen Wasser und Bergen", "wiki": "Limone_sul_Garda", "text": "Limone sul Garda gehört zu den ruhigeren und landschaftlich schönsten Orten am Gardasee. Direkt am Wasser, mit steilen Bergen im Hintergrund, ist es ein idealer Zwischenstopp auf dem Weg nach Süden."}, {"title": "Lucca", "subtitle": "Toskana mit Stadtmauer und viel Atmosphäre", "wiki": "Lucca", "text": "Lucca ist eine elegante, oft unterschätzte Stadt in der Toskana. Besonders bekannt sind die vollständig erhaltene Stadtmauer, die historischen Plätze und die entspannte italienische Atmosphäre."}, {"title": "Olbia & Costa Smeralda", "subtitle": "Ankommen zwischen hellem Sand und klarem Wasser", "wiki": "Costa_Smeralda", "text": "Die Costa Smeralda gehört zu den bekanntesten Küstenabschnitten Sardiniens. Helles Wasser, kleine Buchten und helle Sandstrände machen die Region zu einem besonders eindrucksvollen Einstieg in die Insel."}, {"title": "La-Maddalena-Archipel", "subtitle": "Inselwelt mit geschützter Natur", "wiki": "Maddalena_archipelago", "text": "Der La-Maddalena-Archipel ist bekannt für glasklares Wasser, felsige Küsten und geschützte Natur. Die Inselgruppe zeigt eine der schönsten und ursprünglichsten Seiten des Nordens von Sardinien."}, {"title": "Castelsardo", "subtitle": "Historische Stadt auf dem Felsen", "wiki": "Castelsardo", "text": "Castelsardo liegt spektakulär auf einem Felsen über dem Meer. Enge Gassen, mittelalterliche Architektur und weite Blicke über die Küste machen den Ort zu einem der charaktervollsten Stopps im Norden."}, {"title": "Alghero", "subtitle": "Küstenstadt mit katalanischem Einschlag", "wiki": "Alghero", "text": "Alghero verbindet Altstadt, Stadtmauer und Meer. Die katalanische Prägung, die lebendige Uferpromenade und die direkte Lage an der Küste geben der Stadt einen ganz eigenen Charakter."}, {"title": "Neptungrotte", "subtitle": "Höhle mit unterirdischen Seen", "wiki": "Neptune%27s_Grotto", "text": "Die Neptungrotte gehört zu den bekanntesten Natursehenswürdigkeiten Sardiniens. Große Hallen, Tropfsteinformationen und das Zusammenspiel aus Fels und Wasser machen den Ort besonders eindrucksvoll."}, {"title": "Cagliari", "subtitle": "Geschichte, Stadtleben und Strandnähe", "wiki": "Cagliari", "text": "Cagliari verbindet historische Architektur, lebendige Stadtkultur und lange Strände in unmittelbarer Nähe. Dadurch wirkt die Stadt gleichzeitig urban und entspannt."}, {"title": "Rückweg Richtung Olbia", "subtitle": "Die Insel entspannt ausklingen lassen", "wiki": "Olbia", "text": "Zum Schluss führt die Route wieder Richtung Olbia. Diese letzte Etappe passt gut, um noch einmal Küste, Sonne und das Gefühl einer ruhigen Wohnmobilreise auf Sardinien mitzunehmen."}, {"title": "Gardasee oder Meran", "subtitle": "Ruhiger Abschluss auf dem Heimweg", "wiki": "Merano", "text": "Auf der Rückfahrt bietet sich entweder noch einmal der Gardasee an oder Meran als entspannter Ausklang. Meran verbindet Berge, Grün und ein fast mediterranes Klima auf sehr angenehme Weise."}];
+const fallbackImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/640px-No_image_available.svg.png';
+
+async function fetchWikiImage(pageTitle) {
+  const url = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(pageTitle);
+  const res = await fetch(url, { headers: { accept: 'application/json' } });
+  const data = await res.json();
+  return (data.originalimage && data.originalimage.source) || (data.thumbnail && data.thumbnail.source) || fallbackImage;
+}
+
+function renderCards() {
+  document.getElementById('cards').innerHTML = stops.map((stop, idx) => `
+    <article class="card" id="card-${idx}">
+      <div class="loading">Bild wird geladen …</div>
+      <div class="card-body">
+        <h3>${stop.title}</h3>
+        <div class="sub">${stop.subtitle}</div>
+        <p>${stop.text}</p>
+      </div>
+    </article>
+  `).join('');
+}
+
+async function setHeroImage() {
+  const hero = document.getElementById('hero-image');
+  hero.src = fallbackImage;
+  try {
+    hero.src = await fetchWikiImage('Costa_Smeralda');
+  } catch (e) {
+    hero.src = fallbackImage;
+  }
+}
+
+async function loadCardImages() {
+  for (let i = 0; i < stops.length; i++) {
+    const stop = stops[i];
+    const card = document.getElementById(`card-${i}`);
+    const loading = card.querySelector('.loading');
+    const img = document.createElement('img');
+    img.alt = stop.title;
+    img.loading = 'lazy';
+    img.src = fallbackImage;
+    try {
+      if (stop.image_override) {
+        img.src = stop.image_override;
+      } else {
+        img.src = await fetchWikiImage(stop.wiki);
+      }
+    } catch (e) {
+      img.src = fallbackImage;
+    }
+    loading.replaceWith(img);
+  }
+}
+
+renderCards();
+setHeroImage();
+loadCardImages();
+</script>
+</body>
+</html>
