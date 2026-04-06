@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Skandinavien Roadtrip · 60. Geburtstag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:       #C9A96E;
+  --gold-light: #E8D5B0;
+  --dark:       #1a1a18;
+  --off-white:  #F7F4EE;
+  --muted:      #7a7670;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  background: var(--off-white);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ── BACK NAV ── */
+.back-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 18px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(26,26,24,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold-light);
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+}
+.back-link:hover { color: var(--gold); }
+.back-link svg { transition: transform 0.25s; }
+.back-link:hover svg { transform: translateX(-4px); }
+
+.nav-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: rgba(232,213,176,0.5);
+  letter-spacing: 0.04em;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.05);
+  transition: transform 8s ease-out;
+}
+.hero-img.loaded { transform: scale(1); }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26,26,24,0.15) 0%,
+    rgba(26,26,24,0.1) 40%,
+    rgba(26,26,24,0.7) 75%,
+    rgba(26,26,24,0.95) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 48px 80px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 1.06;
+  color: var(--off-white);
+  max-width: 780px;
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 22px;
+}
+
+.hero-lead {
+  font-family: 'Jost', sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(247,244,238,0.65);
+  max-width: 540px;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  right: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(201,169,110,0.5);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(201,169,110,0.4);
+}
+
+/* ── INTRO STRIP ── */
+.intro-strip {
+  background: var(--dark);
+  padding: 100px 48px;
+}
+.intro-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.intro-text-block { display: flex; flex-direction: column; gap: 20px; max-width: 680px; }
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+}
+.section-title-dark {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 400;
+  color: var(--off-white);
+  line-height: 1.2;
+}
+.section-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-body-dark {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(247,244,238,0.6);
+}
+
+/* ── ROUTE VISUAL ── */
+.route-section {
+  background: var(--off-white);
+  padding: 100px 48px;
+  overflow: hidden;
+}
+.route-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.route-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 60px;
+  max-width: 540px;
+}
+.section-title-light {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1.2;
+}
+.section-body-light {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* Route ribbon */
+.route-ribbon {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 32px 0;
+  align-items: center;
+}
+.route-ribbon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.25;
+  transform: translateY(-50%);
+}
+.route-stop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 90px;
+  position: relative;
+  padding: 0 4px;
+}
+.route-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--off-white);
+  position: relative;
+  z-index: 1;
+  transition: background 0.2s, transform 0.2s;
+}
+.route-stop:hover .route-dot {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+.route-stop-label {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--dark);
+  opacity: 0.6;
+  line-height: 1.3;
+  max-width: 80px;
+  transition: opacity 0.2s, color 0.2s;
+}
+.route-stop:hover .route-stop-label {
+  opacity: 1;
+  color: var(--gold);
+}
+.route-stop-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 10px;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* ── STOPS SECTION ── */
+.stops-section {
+  background: var(--dark);
+  padding: 100px 48px 120px;
+}
+.stops-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.stops-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+.stops-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+/* Cards */
+.stop-card {
+  position: relative;
+  background: #1f1f1c;
+  overflow: hidden;
+  cursor: default;
+}
+.stop-card:hover .card-img-wrap img {
+  transform: scale(1.06);
+}
+.stop-card:hover .card-overlay { opacity: 1; }
+
+.card-img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #2a2a26;
+}
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.card-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(201,169,110,0.3);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.card-num {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  color: var(--gold);
+  background: rgba(26,26,24,0.7);
+  padding: 4px 8px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(201,169,110,0.07);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card-body {
+  padding: 22px 24px 26px;
+  border-bottom: 1px solid rgba(201,169,110,0.08);
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--off-white);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.card-subtitle {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+.card-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(247,244,238,0.5);
+}
+
+/* Featured first card spans 2 columns */
+.stop-card.featured {
+  grid-column: span 2;
+}
+.stop-card.featured .card-img-wrap {
+  aspect-ratio: 16/9;
+}
+.stop-card.featured .card-title { font-size: 28px; }
+.stop-card.featured .card-text { font-size: 15px; }
+
+/* ── CLOSING SECTION ── */
+.closing-section {
+  background: var(--off-white);
+  padding: 100px 48px;
+  text-align: center;
+}
+.closing-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.closing-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--dark);
+  line-height: 1.15;
+}
+.closing-title em { font-style: italic; color: var(--gold); }
+.closing-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.back-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border: 1px solid var(--gold);
+  color: var(--dark);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: background 0.25s, color 0.25s;
+}
+.back-cta:hover {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+footer p {
+  font-size: 13px;
+  color: rgba(247,244,238,0.25);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+/* ── FADE-IN ANIMATION ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .back-nav { padding: 16px 24px; }
+  .hero-content { padding: 0 24px 60px; }
+  .stops-grid { grid-template-columns: 1fr 1fr; }
+  .stop-card.featured { grid-column: span 2; }
+  .stops-section, .route-section, .intro-strip, .closing-section { padding: 72px 24px; }
+}
+@media (max-width: 600px) {
+  .stops-grid { grid-template-columns: 1fr; }
+  .stop-card.featured { grid-column: span 1; }
+  .stop-card.featured .card-img-wrap { aspect-ratio: 4/3; }
+  .nav-label { display: none; }
+  .hero-scroll-hint { display: none; }
+  .stops-section, .route-section, .intro-strip, .closing-section { padding: 52px 20px; }
+  footer { padding: 24px 20px; }
+  .route-ribbon {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px 8px;
+    padding: 24px 0;
+  }
+  .route-ribbon::before { display: none; }
+  .route-stop {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    min-width: unset;
+    padding: 0;
+  }
+  .route-dot { flex-shrink: 0; width: 8px; height: 8px; }
+  .route-stop-label {
+    font-size: 12px;
+    text-align: left;
+    max-width: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .route-stop-num { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── BACK NAV ── -->
+<nav class="back-nav">
+  <a href="index.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Zurück zur Übersicht
+  </a>
+  <span class="nav-label">Skandinavien Roadtrip</span>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <img
+    id="hero-img"
+    class="hero-img"
+    src="https://images.unsplash.com/photo-1601439678777-b2b3c56fa627?w=1800&auto=format&fit=crop&q=80"
+    alt="Geirangerfjord, Norwegen"
+    onload="this.classList.add('loaded')"
+  >
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Norwegen · Schweden · Dänemark</span>
+    <h1 class="hero-title">Zwischen Fjorden,<br><em>Küsten &amp; Wikingerorten</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-lead">Eine Route durch den Norden — von mittelalterlichen Städten über dramatische Fjordlandschaften bis hin zu lebendigen Hafenstädten. Skandinavien in all seinen Facetten.</p>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    Entdecken
+  </div>
+</section>
+
+<!-- ── INTRO STRIP ── -->
+<section class="intro-strip">
+  <div class="intro-inner">
+    <div class="intro-text-block fade-in">
+      <span class="section-eyebrow">Die Route</span>
+      <h2 class="section-title-dark">Ein Weg durch den Norden</h2>
+      <div class="section-divider"></div>
+      <p class="section-body-dark">
+        Die Route beginnt im historischen Schwerin und führt über Dänemarks älteste Städte, durch Fjordnorwegen und zurück durch Schweden. Sie verbindet eindrucksvolle Natur, nordische Küstenkultur und Orte, an denen die Wikinger Geschichte geschrieben haben — zu einer Reise, die weit mehr als schöne Landschaften bereithält.
+      </p>
+  </div>
+</section>
+
+<!-- ── ROUTE VISUAL ── -->
+<section class="route-section">
+  <div class="route-inner">
+    <div class="route-header fade-in">
+      <span class="section-eyebrow">Alle Stationen auf einen Blick</span>
+      <h2 class="section-title-light">Die Reiseroute</h2>
+      <div class="section-divider"></div>
+      <p class="section-body-light">Von Schwerin in den hohen Norden und zurück über die Öresundbrücke — jede Station ein eigenes Kapitel.</p>
+    </div>
+    <div class="route-ribbon fade-in" id="route-ribbon" style="transition-delay:0.1s">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── STOPS ── -->
+<section class="stops-section">
+  <div class="stops-inner">
+    <div class="stops-header fade-in">
+      <span class="section-eyebrow">Stationen entlang der Route</span>
+      <h2 class="section-title-dark">Die Orte im Detail</h2>
+      <div class="section-divider" style="background:var(--gold);"></div>
+    </div>
+    <div class="stops-grid fade-in" id="stops-grid" style="transition-delay:0.1s">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING ── -->
+<section class="closing-section">
+  <div class="closing-inner fade-in">
+    <span class="section-eyebrow">Bereit für den Norden?</span>
+    <h2 class="closing-title">Eine Reise,<br><em>die bleibt.</em></h2>
+    <div class="section-divider"></div>
+    <p class="closing-body">Skandinavien ist mehr als Landschaft — es ist ein Gefühl. Die Stille über dem Fjord, das Licht im Norden, alte Städte voller Geschichte. Diese Route ist eine Einladung.</p>
+    <a href="index.html" class="back-cta">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Zurück zur Übersicht
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Zum 60. Geburtstag · Eine Reise durch Skandinavien · Mit Liebe gestaltet</p>
+</footer>
+
+<script>
+const stops = [
+  { title:"Schwerin", subtitle:"Auftakt zwischen Schloss und Seen", wiki:"Schwerin", text:"Zum Auftakt wartet Schwerin mit einem Schloss wie aus einem Märchen, kleinen Gassen und viel Wasser ringsum. Ein schöner erster Eindruck, bevor die Reise weiter Richtung Norden führt." },
+  { title:"Ribe", subtitle:"Dänemarks älteste Stadt", wiki:"Ribe", image_override:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ75QYzwcNowy9YSCLg6e6M4kj9nB33mLF76g&s", text:"In Ribe scheint die Zeit ein wenig langsamer zu laufen. Kopfsteinpflaster, schmale Gassen und der Dom machen die Stadt zu einem Ort, an dem man einfach loslaufen und Atmosphäre aufnehmen möchte." },
+  { title:"Jelling & Aarhus", subtitle:"Wikinger-Geschichte und Hafenflair", wiki:"Jelling_stones", text:"In Jelling erzählen die Runensteine und Grabhügel von der Wikingerzeit. Danach bringt Aarhus eine modernere Seite Skandinaviens hinein – mit Hafen, offenen Plätzen und entspannter Stadtstimmung." },
+  { title:"Göteborg", subtitle:"Wasserstadt als Tor nach Norwegen", wiki:"Gothenburg", text:"Göteborg verbindet Kanäle, Hafen und eine lockere Atmosphäre. Die Stadt ist weniger klassischer Sightseeing-Ort als angenehmer Zwischenstopp mit viel Wasser und nordischem Stadtgefühl." },
+  { title:"Tanum", subtitle:"Wikinger-Felszeichnungen der Bronzezeit", wiki:"Rock_Carvings_in_Tanum", text:"Direkt an der Küstenstraße zwischen Göteborg und Oslo liegt Tanum – ein UNESCO-Welterbe mit über 40.000 Felszeichnungen auf fast 600 Flächen. Schiffe, Krieger und Tiere, eingeritzt vor mehr als 3.000 Jahren. Ein stiller, eindrucksvoller Ort." },
+  { title:"Oslo", subtitle:"Der Übergang nach Fjordnorwegen", wiki:"Oslo", text:"Oslo liegt direkt am Fjord und markiert den Übergang in den landschaftlichen Teil der Reise. Besonders schön sind die Uferbereiche, die moderne Oper und die weiten Blicke aufs Wasser." },
+  { title:"Flåm", subtitle:"Der Einstieg ins Fjordland", wiki:"Flåm", text:"Flåm ist einer dieser Orte, die sofort nach Norwegen aussehen: ruhiges Wasser, steile Berge und grüne Hänge. Hier beginnt die Reise mitten in die berühmte Fjordlandschaft hinein." },
+  { title:"Gudvangen", subtitle:"Wikingerdorf im Nærøyfjord", wiki:"Gudvangen", text:"Keine zehn Minuten von Flåm entfernt, am Ende des schmalen Nærøyfjords, liegt Gudvangen. Hier wurde ein lebendiges Wikingerdorf nachgebaut – mit Langhäusern, offenen Feuerstellen und dem Fjord als Kulisse. Ein Ort, der sich anfühlt wie ein Sprung zurück ins Jahr 900." },
+  { title:"Loen", subtitle:"Aussicht über Fjord, Berge und See", wiki:"Loen", image_override:"https://www.oldencruise.com/wp-content/uploads/sites/2117/2023/11/20230520_111306-Loen-Skylift-ahblakset-scaled.webp?resize=360%2C240&zoom=2", text:"Loen ist vor allem für seine spektakuläre Aussicht bekannt. Der Loen Skylift bringt einen hoch über den Fjord, wo sich Berge, Wasser und Weite auf einmal vor einem ausbreiten." },
+  { title:"Geirangerfjord & Ålesund", subtitle:"Norwegens berühmte Postkartenlandschaft", wiki:"Geirangerfjord", text:"Am Geirangerfjord zeigt sich Norwegen von seiner berühmtesten Seite: Wasserfälle, steile Hänge und tiefblaues Wasser. Ålesund ergänzt das mit Jugendstilhäusern und einer besonders schönen Lage am Meer.", featured:true },
+  { title:"Nordlichter", subtitle:"Das Naturspektakel des Nordens", wiki:"Aurora_borealis", text:"Kaum ein Naturphänomen ist eindrucksvoller als die Nordlichter über Norwegens Fjorden und dunklem Himmel. Sie sind nur bei klarem Himmel und ausreichender Dunkelheit sichtbar — die Reise sollte daher zwischen September und März stattfinden. In den hellen Sommermonaten bleibt der Nordhimmel leider dunkellos." },
+  { title:"Mora", subtitle:"Schwedische Wald- und Seenlandschaft", wiki:"Mora,_Sweden", text:"Mit Mora verändert sich die Landschaft spürbar: mehr Wälder, mehr Seen und kleinere Orte. Hier steht weniger das einzelne Highlight im Vordergrund als das Gefühl, durch Schwedens Natur zu reisen." },
+  { title:"Stockholm", subtitle:"Inselstadt und das berühmte Vasa-Schiff", wiki:"Stockholm", image_override:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Wasa%2C_Seitenansicht.jpg/500px-Wasa%2C_Seitenansicht.jpg", text:"Stockholm liegt auf Inseln und wirkt dadurch weit, hell und offen. Besonders spannend ist das Vasa-Museum mit seinem fast vollständig erhaltenen Schiff – eines der eindrucksvollsten Stücke schwedischer Geschichte." },
+  { title:"Kopenhagen", subtitle:"Kanäle, Hafen und skandinavische Leichtigkeit", wiki:"Copenhagen", text:"Kopenhagen bringt noch einmal eine andere Seite Skandinaviens hinein: Nyhavn, Wasser, Design und ein Stadtbild, das zugleich entspannt und lebendig wirkt." },
+  { title:"Roskilde", subtitle:"Wikingerschiffe aus dem Jahr 1000", wiki:"Viking_Ship_Museum_(Roskilde)", image_override:"https://upload.wikimedia.org/wikipedia/commons/3/32/Viking_ship_museum_Roskilde_Denmark_201172962.jpg", text:"Roskilde liegt nur eine halbe Stunde von Kopenhagen entfernt und beherbergt das wohl bedeutendste Wikinger-Museum Skandinaviens. Fünf original erhaltene Langschiffe, direkt aus dem Fjord geborgen, erzählen von Seefahrt, Handel und dem Leben der Wikinger auf dem Wasser." },
+  { title:"Kronborg & Öresundbrücke", subtitle:"Küstenstraße, Schloss und große Querung", wiki:"Øresund_Bridge", text:"Die Küstenstraße Richtung Helsingør gehört zu den schönen Fahrstrecken der Route. Dazu kommen Kronborg direkt am Meer und die Überquerung der Öresundbrücke als markanter Moment zwischen Dänemark und Schweden." },
+  { title:"Lund", subtitle:"Kleine Universitätsstadt mit Charakter", wiki:"Lund", text:"Lund ist kleiner und ruhiger als viele andere Städte auf der Route. Der Dom, die alten Straßen und die kompakte Altstadt machen den Ort besonders angenehm zum Ankommen und Erkunden." },
+  { title:"Møns Klint", subtitle:"Kreidefelsen über der Ostsee", wiki:"Møns_Klint", text:"Møns Klint gehört zu den eindrucksvollsten Naturorten Dänemarks. Weiße Kreidefelsen, grüne Wälder und der Blick auf die Ostsee sorgen für einen starken Abschluss der Reise." }
+];
+
+const fallback = 'https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?w=600&auto=format&fit=crop&q=60';
+
+// ── Route ribbon
+(function buildRibbon() {
+  const ribbon = document.getElementById('route-ribbon');
+  ribbon.innerHTML = stops.map((s, i) => `
+    <div class="route-stop">
+      <span class="route-stop-num">${String(i+1).padStart(2,'0')}</span>
+      <div class="route-dot"></div>
+      <span class="route-stop-label">${s.title.split('&')[0].trim()}</span>
+    </div>
+  `).join('');
+})();
+
+// ── Stops grid
+(function buildGrid() {
+  const grid = document.getElementById('stops-grid');
+  grid.innerHTML = stops.map((s, i) => `
+    <article class="stop-card${s.featured ? ' featured' : ''}" id="sc-${i}">
+      <div class="card-img-wrap">
+        <div class="card-loading">Laden …</div>
+        <div class="card-overlay"></div>
+      </div>
+      <span class="card-num">${String(i+1).padStart(2,'0')}</span>
+      <div class="card-body">
+        <h3 class="card-title">${s.title}</h3>
+        <div class="card-subtitle">${s.subtitle}</div>
+        <p class="card-text">${s.text}</p>
+      </div>
+    </article>
+  `).join('');
+})();
+
+// ── Image loading
+async function fetchWikiImg(pageTitle) {
+  const url = 'https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(pageTitle);
+  const res = await fetch(url, { headers: { accept:'application/json' } });
+  const d = await res.json();
+  return (d.originalimage && d.originalimage.source) || (d.thumbnail && d.thumbnail.source) || fallback;
+}
+
+async function loadImages() {
+  for (let i = 0; i < stops.length; i++) {
+    const s = stops[i];
+    const card = document.getElementById(`sc-${i}`);
+    const wrap = card.querySelector('.card-img-wrap');
+    const loading = wrap.querySelector('.card-loading');
+    const img = document.createElement('img');
+    img.alt = s.title;
+    img.loading = 'lazy';
+    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+    wrap.style.position = 'relative';
+    try {
+      img.src = s.image_override ? s.image_override : await fetchWikiImg(s.wiki);
+    } catch(e) {
+      img.src = fallback;
+    }
+    loading.replaceWith(img);
+    const overlay = wrap.querySelector('.card-overlay');
+    if (overlay) wrap.appendChild(overlay);
+  }
+}
+loadImages();
+
+// ── Fade-in on scroll
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.01 });
+fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
